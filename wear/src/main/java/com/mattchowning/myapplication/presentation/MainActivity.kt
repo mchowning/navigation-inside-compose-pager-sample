@@ -17,12 +17,15 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHost
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.Text
+import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
 import com.google.android.horologist.compose.navscaffold.WearNavScaffold
@@ -36,11 +39,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
-                PagerScreen(2) { page ->
+//                PagerScreen(2) { page ->
+                HorizontalPager(2) { page ->
                     when (page) {
                         0 -> {
                             val navController = rememberSwipeDismissableNavController()
-                            WearNavScaffold(
+//                            WearNavScaffold(
+                            SwipeDismissableNavHost(
                                 startDestination = "start",
                                 navController = navController
                             ) {
